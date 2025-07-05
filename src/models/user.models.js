@@ -101,7 +101,7 @@ userSchema.methods.generateRefreshToken = function () {
 	);
 };
 
-userSchema.methods.generarteTemporaryToken = function () {
+userSchema.methods.generateTemporaryToken = function () {
 	const unhashedToken = crypto.randomBytes(32).toString("hex");
 
 	const hashedToken = crypto

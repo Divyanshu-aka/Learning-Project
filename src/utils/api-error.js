@@ -17,12 +17,12 @@ class ApiError extends Error {
 		this.statusCode = statusCode;
 		this.message = message;
 		this.success = false;
-		this.errors = this.errors;
+		this.errors = errors;
 
 		if (stack) {
 			this.stack = stack;
 		} else {
-			errors.captureStackTrace(this, this.constructor);
+			Error.captureStackTrace(this, this.constructor);
 		}
 	}
 }
