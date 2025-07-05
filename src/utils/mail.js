@@ -36,6 +36,7 @@ const sendMail = async (options) => {
 
 	try {
 		await transporter.sendMail(mail);
+		console.log("Email sent successfully to:", options.email);
 	} catch (error) {
 		console.error("Error sending email:", error);
 	}
@@ -84,3 +85,6 @@ const forgotPasswordEmailContentGen = (username, passwordResetUrl) => {
 // 	subject: "qwerty",
 // 	mailGenContent: verificationEmailContentGen(username, ``),
 // });
+
+export { sendMail, verificationEmailContentGen, forgotPasswordEmailContentGen };
+// For instance methods (called on user documents)
