@@ -21,8 +21,21 @@ const userRegisterationValidator = () => {
 
 const userLoginValidator = () => {
 	return [
-		body("email").isEmail().withMessage("Email is invalid"),
-		body("password").notEmpty().withMessage("Password is required"),
+		body("email")
+			.optional() // Make email optional
+			.isEmail()
+			.withMessage("Email is invalid"),
+
+		body("username")
+			.optional() // Make username optional
+			.isLength({ min: 3 })
+			.withMessage("Username must be at least 3 characters"),
+
+		body("password")
+			.notEmpty()
+			.withMessage("Password is required")
+			.isLength({ min: 6 })
+			.withMessage("Password must be at least 6 characters"),
 	];
 };
 
